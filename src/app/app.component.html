@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">QuickBite</a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/menu" routerLinkActive="active">Menu</a>
+    <a routerLink="/cart" routerLinkActive="active">Cart</a>
+    <a routerLink="/checkout" routerLinkActive="active">Checkout</a>
+  </div>
+</nav>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

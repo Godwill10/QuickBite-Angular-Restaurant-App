@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MenuService {
-  private apiUrl = 'http://localhost:3000/api/menu';
+  private apiUrl = '/api/menu';
   constructor(private http: HttpClient) {}
   getMenu(): Observable<any[]> { return this.http.get<any[]>(this.apiUrl); }
   getItem(id: number): Observable<any> { return this.http.get<any>(`${this.apiUrl}/${id}`); }

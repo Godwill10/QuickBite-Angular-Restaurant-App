@@ -11,7 +11,7 @@ export class CheckoutComponent {
     if(!this.name.trim() || !this.email.trim()){ alert('Please enter your name and email.'); return; }
     if(this.cartService.getCart().length===0){ alert('Your cart is empty.'); return; }
     const order={ customer:this.name.trim(), email:this.email.trim(), items:this.cartService.getCart(), total:this.cartService.getTotal() };
-    this.http.post('http://localhost:3000/api/order',order).subscribe({
+    this.http.post('/api/order',order).subscribe({
       next:()=>{ alert('Order placed successfully!'); this.cartService.clear(); this.router.navigate(['/']); },
       error:err=>{ alert('Error placing order.'); console.error(err); }
     });

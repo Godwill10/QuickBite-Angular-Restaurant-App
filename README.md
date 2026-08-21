@@ -1,48 +1,90 @@
 # QuickBite Angular Restaurant App
 
-QuickBite is a beginner-friendly full-stack restaurant ordering project built with Angular 18, ExpressJS, Node.js, plain CSS, and JSON file storage.
+QuickBite is a responsive full-stack restaurant ordering application built with Angular 18 and an Express REST API. Customers can browse a menu, review individual dishes, manage a cart, complete checkout, and submit an order through a validated API.
 
-## Features
+## Highlights
 
-- Black and gold restaurant interface
-- Home, Menu, Details, Cart, and Checkout pages
-- Menu data loaded from an Express API
-- Quantity selection before adding menu items
-- Shopping cart with calculated totals
-- Checkout form
-- Orders submitted to the Express API
-- Orders stored in `orders.json`
-- Redirect to the home page after a successful order
-- Responsive CSS without Tailwind or Bootstrap
+- Responsive black-and-gold restaurant interface
+- Angular routing for Home, Menu, Details, Cart, and Checkout
+- Menu and item-detail data loaded from an Express API
+- Quantity selection and centralized cart state
+- Calculated order totals and checkout validation
+- Server-side payload validation and total verification
+- JSON-backed order persistence for local demonstration
+- Same-origin production deployment with Angular history fallback
+- GitHub Actions build and API smoke tests
 
-## Run the project
+## Architecture
 
-Install dependencies:
-
-```bash
-npm install
+```mermaid
+flowchart LR
+    U[Customer] --> A[Angular UI]
+    A -->|GET /api/menu| E[Express API]
+    A -->|POST /api/order| E
+    E --> M[Menu data]
+    E --> O[orders.json]
 ```
 
-Start the API in one terminal:
+Angular owns the browser experience and cart state. Express exposes the REST endpoints, validates submitted orders, recalculates totals, and stores accepted orders. In production, Express also serves the compiled Angular application.
+
+## REST API
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Deployment health check |
+| `GET` | `/api/menu` | Return all menu items |
+| `GET` | `/api/menu/:id` | Return one menu item |
+| `POST` | `/api/order` | Validate and save an order |
+
+An order requires a customer name, valid email, at least one item, positive integer quantities, and a total that matches the server-calculated amount.
+
+## Run locally
+
+Requirements: Node.js 20+ and npm.
+
+```bash
+npm ci
+```
+
+Start the API:
 
 ```bash
 npm run server
 ```
 
-Start Angular in another terminal:
+In a second terminal, start Angular:
 
 ```bash
 npm start
 ```
 
-Open `http://localhost:4200` in your browser. The API runs on port 3000.
+Open `http://localhost:4200`. Angular proxies `/api` requests to Express on port `3000`.
 
-## Menu Photos
+## Production build
 
-Add your own photos to `src/assets/images/` with these filenames:
+```bash
+npm run build
+npm run start:production
+```
 
-- `burger.jpg`
-- `fries.jpg`
-- `icedtea.jpg`
+The Express server uses the host's `PORT` environment variable and serves the compiled application from `dist/quickbite-angular18`.
 
-The menu configuration in `server.js` already uses those paths.
+## Project structure
+
+```text
+src/app/                 Angular components, pages, routing, and services
+src/assets/images/       Version-controlled menu artwork
+server.js                Express REST API and production static hosting
+orders.json              Local demonstration order storage
+proxy.conf.json          Local Angular-to-Express API proxy
+render.yaml              Render deployment blueprint
+.github/workflows/       Automated build and smoke testing
+```
+
+## Engineering notes
+
+`orders.json` is intentionally lightweight for a portfolio demonstration. A production version should use PostgreSQL or another durable database because container filesystems can be replaced during deployment.
+
+## License
+
+MIT © 2026 Godwill Afolabi

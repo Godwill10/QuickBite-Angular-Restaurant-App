@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
-    "server": "node server.js"
+    "server": "node server.js",
+    "start:production": "node server.js"
   },
   "private": true,
   "dependencies": {

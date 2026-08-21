@@ -1,0 +1,1 @@
+:root{--gold:#d4af37;--dark:#0f0f0f}*{box-sizing:border-box}body{margin:0;background:var(--dark);color:#fff;font-family:'Playfair Display',serif;min-height:100vh}button,input{font:inherit}

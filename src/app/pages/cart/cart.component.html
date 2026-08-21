@@ -1,0 +1,6 @@
+<header class="cart-header"><p>YOUR SELECTION</p><h2>Your Cart</h2></header>
+<div class="cart-container">
+  <div *ngIf="cartService.cart.length === 0" class="empty-cart"><h3>Your cart is empty</h3><p>Explore our menu and add something delicious.</p><a routerLink="/menu">Back to Menu</a></div>
+  <div *ngFor="let item of cartService.cart" class="cart-item"><div><h3>{{ item.name }}</h3><p>{{ item.quantity }} × ${{ item.price.toFixed(2) }}</p><p class="line-total">${{ (item.quantity * item.price).toFixed(2) }}</p></div><button (click)="remove(item.id)">Remove</button></div>
+  <section *ngIf="cartService.cart.length > 0" class="totals"><span>Order Total</span><strong>${{ getTotal().toFixed(2) }}</strong><a routerLink="/checkout">Continue to Checkout</a></section>
+</div>

@@ -1,0 +1,4 @@
+<section *ngIf="item" class="details">
+  <div class="photo" [style.backgroundImage]="'url(' + item.image + ')'" role="img" [attr.aria-label]="item.name"></div>
+  <div class="info"><p class="eyebrow">QUICKBITE FAVORITE</p><h2>{{ item.name }}</h2><p class="description">{{ item.description }}</p><p class="price">${{ item.price.toFixed(2) }}</p><button (click)="addToCart()">Add to Cart</button><a routerLink="/menu">Back to Menu</a></div>
+</section>

@@ -1,0 +1,5 @@
+<header class="checkout-header"><p>FINAL STEP</p><h2>Checkout</h2><span>Review your total and tell us where to send your confirmation.</span></header>
+<div class="checkout-layout">
+  <section class="checkout-card"><h3>Customer Information</h3><div class="input-block"><label for="name">Name</label><input id="name" [(ngModel)]="name" placeholder="Your full name"></div><div class="input-block"><label for="email">Email</label><input id="email" type="email" [(ngModel)]="email" placeholder="you@example.com"></div><button (click)="submitOrder()">Place Order</button></section>
+  <aside class="summary"><p>ORDER TOTAL</p><strong>${{ cartService.getTotal().toFixed(2) }}</strong><span>{{ cartService.cart.length }} menu item type(s)</span><a routerLink="/cart">Return to Cart</a></aside>
+</div>

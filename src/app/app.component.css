@@ -1,0 +1,7 @@
+.navbar { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:18px 6%; border-bottom:1px solid var(--gold); background:#0b0b0b; }
+.navbar > a { font-size:1.5rem; font-weight:700; }
+.nav-links { display:flex; gap:24px; }
+.navbar a { color:var(--gold); text-decoration:none; }
+.navbar a.active { color:white; }
+.content { max-width:1100px; margin:auto; padding:40px 24px; }
+@media (max-width:650px){ .navbar{flex-direction:column}.nav-links{flex-wrap:wrap;justify-content:center}.content{padding:25px 16px} }

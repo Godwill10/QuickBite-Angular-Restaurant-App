@@ -1,0 +1,17 @@
+<header class="page-header"><p>CHEF'S SELECTION</p><h2>Our Menu</h2></header>
+<div class="menu-list">
+  <article class="menu-item" *ngFor="let item of items">
+    <div class="img" [style.backgroundImage]="'url(' + item.image + ')'" role="img" [attr.aria-label]="item.name"></div>
+    <div class="card-body">
+      <h3>{{ item.name }}</h3>
+      <p class="description">{{ item.description }}</p>
+      <p class="price">${{ item.price.toFixed(2) }}</p>
+      <div class="qty-row">
+        <label [for]="'qty-' + item.id">Qty</label>
+        <input [id]="'qty-' + item.id" type="number" min="1" max="10" [(ngModel)]="quantities[item.id]">
+        <button (click)="addToCart(item)">Add to Cart</button>
+      </div>
+      <a class="details-link" [routerLink]="['/details', item.id]">View Details</a>
+    </div>
+  </article>
+</div>

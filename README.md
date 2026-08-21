@@ -2,6 +2,8 @@
 
 QuickBite is a responsive full-stack restaurant ordering application built with Angular 18 and an Express REST API. Customers can browse a menu, review individual dishes, manage a cart, complete checkout, and submit an order through a validated API.
 
+**[Live Demo](https://quickbite-angular-restaurant-app.onrender.com)**
+
 ## Highlights
 
 - Responsive black-and-gold restaurant interface

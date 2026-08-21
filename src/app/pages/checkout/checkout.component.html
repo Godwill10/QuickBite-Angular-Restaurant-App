@@ -1,0 +1,7 @@
+<h2 class="checkout-title">Checkout</h2>
+<div class="checkout-container">
+  <div class="order-summary"><h3>Order Summary</h3><div *ngFor="let item of cartService.cart" class="summary-row"><span>{{ item.quantity }} × {{ item.name }}</span><span>${{ (item.price * item.quantity).toFixed(2) }}</span></div><div class="summary-total"><span>Total</span><span>${{ cartService.getTotal().toFixed(2) }}</span></div></div>
+  <div class="input-block"><label>Name</label><input [(ngModel)]="name" placeholder="Your full name"></div>
+  <div class="input-block"><label>Email</label><input type="email" [(ngModel)]="email" placeholder="you@example.com"></div>
+  <button (click)="submitOrder()" class="btn-submit">Place Order</button>
+</div>
